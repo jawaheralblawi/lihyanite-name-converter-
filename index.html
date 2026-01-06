@@ -92,7 +92,63 @@
     <p class="mt-1">Powered by Ancient Wisdom & Modern Technology</p>
 </footer>
 </div>
-<script>
+<script><script>
+    const lihyanMap = {
+        'A': '𐪀', 'B': '𐪁', 'T': '𐪂', 'Th': '𐪃', 'J': '𐪄',
+        'Ḫ': '𐪅', 'D': '𐪆', 'Ḏ': '𐪇', 'R': '𐪈', 'Z': '𐪉',
+        'S': '𐪊', 'Š': '𐪋', 'Ṣ': '𐪌', 'Ḍ': '𐪍', 'Ṭ': '𐪎',
+        'Ẓ': '𐪏', 'ʿ': '𐪐', 'Għ': '𐪑', 'F': '𐪒', 'Q': '𐪓',
+        'K': '𐪔', 'L': '𐪕', 'M': '𐪖', 'N': '𐪗', 'H': '𐪘',
+        'W': '𐪙', 'Y': '𐪚'
+    };
+
+    function convertName() {
+        const inputName = document.getElementById("nameInput").value;
+        const inputNameUpper = inputName.toUpperCase();
+        
+        // تحويل الاسم إلى الدادانية
+        const convertedName = inputNameUpper.split('').map(char => lihyanMap[char] || char).join('');
+        
+        // تحويل الاسم إلى العربية
+        const translatedToArabic = inputName.split('').map(char => translateToArabic(char)).join('');
+        
+        // إنشاء جدول النتيجة
+        const resultTable = `
+            <table border="1" style="width: 100%; border-collapse: collapse; text-align: center; margin: 20px 0;">
+                <thead>
+                    <tr>
+                        <th>اللغة الإنجليزية</th>
+                        <th>اللغة الدادانية</th>
+                        <th>اللغة العربية</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${inputName}</td>
+                        <td>${convertedName}</td>
+                        <td>${translatedToArabic}</td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
+
+        // عرض الجدول في صفحة العرض
+        document.getElementById("convertedNameContainer").innerHTML = resultTable;
+    }
+
+    function translateToArabic(char) {
+        const arabicMap = {
+            'A': 'ا', 'B': 'ب', 'T': 'ت', 'Th': 'ث', 'J': 'ج',
+            'Ḫ': 'خ', 'D': 'د', 'Ḏ': 'ذ', 'R': 'ر', 'Z': 'ز',
+            'S': 'س', 'Š': 'ش', 'Ṣ': 'ص', 'Ḍ': 'ض', 'Ṭ': 'ط',
+            'Ẓ': 'ظ', 'ʿ': 'ع', 'Għ': 'غ', 'F': 'ف', 'Q': 'ق',
+            'K': 'ك', 'L': 'ل', 'M': 'م', 'N': 'ن', 'H': 'هـ',
+            'W': 'و', 'Y': 'ي'
+        };
+
+        return arabicMap[char.toUpperCase()] || char; // جلب الحرف العربي أو إرجاع الحرف الأصلي
+    }
+</script>
     const lihyanMap = {
         'A': '𐩠', 'B': '𐩡', 'C': '𐩢', 'D': '𐩣', 'E': '𐩤',
         'F': '𐩥', 'G': '𐩦', 'H': '𐩧', 'I': '𐩨', 'J': '𐩩',
